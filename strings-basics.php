@@ -65,6 +65,7 @@ echo "<h1>Useful string functions</h1>";
 <h3>examples</h3>
 <h4>trim</h4>
 <?php
+// In the web browser this characters are ignored though.
 $longString = "\t\n\0This string contains several whitespaces at beginning and end but trim eliminates them\t\x0B";
 $longStringCharsQtty = strlen($longString);
 $longStringTrimmed = trim($longString);
