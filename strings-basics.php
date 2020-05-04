@@ -59,5 +59,20 @@ echo "<h1>Useful string functions</h1>";
   <li>stripslashes</li>
   <li>htmlentities</li>
   <li>str_shuffle</li>
-  
+
 </ul>
+<hr>
+<h3>examples</h3>
+<h4>trim</h4>
+<?php
+$longString = "\t\n\0This string contains several whitespaces at beginning and end but trim eliminates them\t\x0B";
+$longStringCharsQtty = strlen($longString);
+$longStringTrimmed = trim($longString);
+$longStringTrimmedCharsQtty = strlen($longStringTrimmed);
+ ?>
+ <p>This string contains whitespaces at beginning and end</p>
+ <?php var_dump($longString)?>
+ <br>
+ <?php echo "Original string contains : ".$longStringCharsQtty." chars"; ?>
+ <br>
+ <?php echo "Trimmed string contains : ".$longStringTrimmedCharsQtty." chars"; ?>
