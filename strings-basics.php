@@ -34,13 +34,13 @@ echo $heredocString;echo "<br>";
 
 echo "<h1>Useful string functions</h1>";
 ?>
-<h3>case managmente</h3>
+<h3>case managment</h3>
 <ul>
-  <li>trim</li>
-  <li>strtolower</li>
-  <li>strtouper</li>
-  <li>ucfirst</li>
-  <li>lcfirst</li>
+  <li><a href="#trim">trim</a></li>
+  <li><a href="#strtolower">strtolower</a></li>
+  <li><a href="#strtoupper">strtoupper</a></li>
+  <li><a href="#ucfirst">ucfirst</a></li>
+  <li><a href="#lcfirst">lcfirst</a></li>
 </ul>
 <h3>searching</h3>
 <ul>
@@ -63,7 +63,7 @@ echo "<h1>Useful string functions</h1>";
 </ul>
 <hr>
 <h3>examples</h3>
-<h4>trim</h4>
+<h4 id="trim">trim</h4>
 <?php
 // In the web browser this characters are ignored though.
 $longString = "\t\n\0This string contains several whitespaces at beginning and end but trim eliminates them\t\x0B";
@@ -77,3 +77,51 @@ $longStringTrimmedCharsQtty = strlen($longStringTrimmed);
  <?php echo "Original string contains : ".$longStringCharsQtty." chars"; ?>
  <br>
  <?php echo "Trimmed string contains : ".$longStringTrimmedCharsQtty." chars"; ?>
+ <h4 id="trim">trim</h4>
+ <?php
+  ?>
+
+  <h4 id="strtolower">strtolower</h4>
+  <?php
+    $mixedCapString ="THiS sTrINg IS WeIRd";
+    $loweredString = strtolower($mixedCapString);
+   ?>
+  <p>strtolower function shift the whole string into lowercase</p>
+  <?php echo "This : $mixedCapString"?>
+  <br>
+  <?php echo "Becomes this : $loweredString" ?>
+<!-- strtoupper -->
+  <h4 id="strtouper">strtouper</h4>
+  <?php
+    $upperedString = strtoupper($mixedCapString);
+  ?>
+  <p>strtoupper function shift the whole string into uppercase</p>
+  <?php echo "This : $mixedCapString";?>
+  <br>
+  <?php echo "Becomes this : $upperedString"; ?>
+
+<!-- ucfirst -->
+  <h4 id="ucfirst">ucfirst</h4>
+  <?php
+    $stringInLower = '  this string starts in lower';
+    $stringFirstUpper = ucfirst(trim($stringInLower));
+  ?>
+  <p>ucfirst function shift the first character of a string into uppercase
+    <small>Firs trim the string to be shure it is capitalized</small>
+  </p>
+  <?php echo "This : $stringInLower";?>
+  <br>
+  <?php echo "Becomes this : $stringFirstUpper"; ?>
+
+  <!-- lcfirst -->
+  <h4 id="lcfirst">lcfirst</h4>
+  <?php
+    $stringInUpper = '  This string starts in upper';
+    $stringFirstLower = lcfirst(trim($stringInUpper));
+  ?>
+  <p>lcfirst function shift the first character of a string into lowercase
+    <small>Firs trim the string to be shure it is capitalized</small>
+  </p>
+  <?php echo "This : $stringInUpper";?>
+  <br>
+  <?php echo "Becomes this : $stringFirstLower"; ?>
