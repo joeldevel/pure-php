@@ -44,13 +44,13 @@ echo "<h1>Useful string functions</h1>";
 </ul>
 <h3>searching</h3>
 <ul>
-  <li>str_word_count</li>
-  <li>strlen</li>
-  <li>strstr</li>
-  <li>stristr</li>
-  <li>strpos</li>
-  <li>str_replace</li>
-  <li>substr</li>
+  <li><a href="#wordCount">str_word_count</a></li>
+  <li><a href="#strlen">strlen</a></li>
+  <li><a href="#strstr">strstr</a></li>
+  <li><a href="#stristr">stristr</a></li>
+  <li><a href="#strpos">strpos</a></li>
+  <li><a href="#str_replace">str_replace</a></li>
+  <li><a href="#substr">substr</a></li>
 </ul>
 <h3>modification</h3>
 <ul>
@@ -63,6 +63,7 @@ echo "<h1>Useful string functions</h1>";
 </ul>
 <hr>
 <h3>examples</h3>
+
 <h4 id="trim">trim</h4>
 <?php
 // In the web browser this characters are ignored though.
@@ -125,3 +126,102 @@ $longStringTrimmedCharsQtty = strlen($longStringTrimmed);
   <?php echo "This : $stringInUpper";?>
   <br>
   <?php echo "Becomes this : $stringFirstLower"; ?>
+<!-- searching -->
+<h4 id="wordCount">str_word_count</h4>
+<p>Counts the number of words inside a string</p>
+<?php
+$stringToAnalize = "This is a remarkably interesting line.";
+echo "The string <em><b>$stringToAnalize</b></em> has " .str_word_count($stringToAnalize) . " words.";
+ ?>
+ <p>But also could return an array with the words of a string as elements, if you pass it a '1' as argument</p>
+<pre>
+<?php
+// echo "The string <em><b>$stringToAnalize</b></em> has " .str_word_count($stringToAnalize) . " words.";
+print_r(str_word_count($stringToAnalize,1));
+ ?>
+</pre>
+
+<!-- strlen -->
+<h4 id="strlen">strlen</h4>
+<p>Returns the length of the given string. </p>
+<p>php.net manual says strlen returns the number of bytes of a string,
+   so if you use UTF8 encoded characters, you better use mb_strlen, or pass
+    the string through utf_decode first, as some users suggest.</p>
+<?php
+echo "The string <em><b>$stringToAnalize</b></em> has " .strlen($stringToAnalize) . " chars.";
+ ?>
+
+<!-- strstr -->
+<h4 id="strstr">strstr</h4>
+<p>Find the first occurrence of a string. Returns part of haystack string
+  starting from and including the first occurrence of needle to the end of
+  haystack.
+</p>
+<p>In this example mail the domain of an email is extracted using strstr</p>
+<?php
+$email  = 'riceandbroccoli@ubermail.com';
+$domain = strstr($email, '@');
+echo "Mail is <b>$email</b><br>";
+echo "domain is <b>$domain</b>"; // prints @ubermail.com
+ ?>
+ <p>But also can be used to get the portion of a string befor the delimiter</p>
+ <?php
+ $user = strstr($email, '@', true); // As of PHP 5.3.0
+ echo "Name is: <b>$user</b>"; // prints riceandbroccoli
+  ?>
+  <!-- stristr -->
+<h4 id="stristr">stristr</h4>
+<p>Like strstr but <b>case insensitive</b>
+</p>
+<h4 id="strpos">strpos</h4>
+<p>Find the position of the first occurrence of a substring in a string</p>
+
+<?php
+$mystring = 'abcedarius';
+$findme   = 'd';
+$pos = strpos($mystring, $findme);
+
+// From php.net
+// Note our use of ===.  Simply == would not work as expected
+// because the position of 'a' was the 0th (first) character.
+if ($pos === false) {
+    echo "The string <b>'$findme'</b> was not found in the string <b>'$mystring'</b>";
+} else {
+    echo "The string <b>'$findme'</b> was found in the string <b>'$mystring'</b>";
+    echo " and exists at position $pos";
+}
+?>
+<!-- str str_replace -->
+<h4 id="str_replace">str_replace</h4>
+<p>Replace text within a portion of a string</p>
+
+<?php
+$var = 'ABCDEFGH:/MNRPQR/';
+echo "Original: $var<hr />\n";
+
+/* These two examples replace all of $var with 'bob'. */
+echo substr_replace($var, 'bob', 0) . "<br />\n";
+echo substr_replace($var, 'bob', 0, strlen($var)) . "<br />\n";
+
+/* Insert 'bob' right at the beginning of $var. */
+echo substr_replace($var, 'bob', 0, 0) . "<br />\n";
+
+/* These next two replace 'MNRPQR' in $var with 'bob'. */
+echo substr_replace($var, 'bob', 10, -1) . "<br />\n";
+echo substr_replace($var, 'bob', -7, -1) . "<br />\n";
+
+/* Delete 'MNRPQR' from $var. */
+echo substr_replace($var, '', 10, -1) . "<br />\n";
+?>
+
+<!-- substr -->
+<h4 id="substr">substr</h4>
+<p> Return part of a string</p>
+
+<?php
+$word = 'abcdef';
+
+$rest = substr($word, -1);    // returns "f"
+$rest = substr($word, -2);    // returns "ef"
+$rest = substr($word, -3, 1); // returns "d"
+?>
