@@ -71,9 +71,9 @@ echo "<h1>Useful string functions</h1>";
   <ul>
     <li><a href="#stripTags">strip_tags</a></li>
     <li><a href="#addslashes">addslashes</a></li>
-    <li>stripslashes</li>
-    <li>htmlentities</li>
-    <li>str_shuffle</li>
+    <li><a href="#stripslashes">stripslashes</a></li>
+    <li><a href="#htmlentities">htmlentities</a></li>
+    <li><a href="#str_shuffle">str_shuffle</a> </li>
   </ul>
 </article>
 <hr>
@@ -285,6 +285,38 @@ $str = "Is your name O\'reilly?";
 // Outputs: Is your name O'reilly?
 echo stripslashes($str);
 ?>
+
+</article>
+<article class="" id="htmlentities">
+  <h4>htmlentities</h4>
+  <p>Convert all applicable characters to HTML entities</p>
+  <p> This function is identical to htmlspecialchars() in all ways, except with
+    htmlentities(), all characters which have HTML character entity
+    equivalents are translated into these entities. If you want to decode
+    instead (the reverse) you can use html_entity_decode().
+  </p>
+
+  <?php
+  $str = "A 'quote' is <b>bold</b>";
+  echo "String is: $str<br>";
+  // Outputs: A 'quote' is &lt;b&gt;bold&lt;/b&gt;
+  echo "Using htmlentities: ".htmlentities($str);
+  // Outputs: A &#039;quote&#039; is &lt;b&gt;bold&lt;/b&gt;
+  echo htmlentities($str, ENT_QUOTES);
+  ?>
+</article>
+<article class="" id="str_shuffle">
+  <h4>str_shuffle</h4>
+    <p>Randomly shuffles a string .<b>Should not be used for cryptographic purposes</b></p>
+
+    <?php
+    $str = 'this is the string befor shuffling';
+    echo "Before shuffle: $str<br>";
+
+    $shuffled = str_shuffle($str);
+
+    echo "After shuffle: $shuffled";
+    ?>
 
 </article>
 </section>
