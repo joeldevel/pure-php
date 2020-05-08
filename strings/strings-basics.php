@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <section>
 <?php
 
 echo "<h1>Working with strings</h1>";
@@ -34,33 +42,40 @@ echo $heredocString;echo "<br>";
 
 echo "<h1>Useful string functions</h1>";
 ?>
-<h3>case managment</h3>
-<ul>
-  <li><a href="#trim">trim</a></li>
-  <li><a href="#strtolower">strtolower</a></li>
-  <li><a href="#strtoupper">strtoupper</a></li>
-  <li><a href="#ucfirst">ucfirst</a></li>
-  <li><a href="#lcfirst">lcfirst</a></li>
-</ul>
-<h3>searching</h3>
-<ul>
-  <li><a href="#wordCount">str_word_count</a></li>
-  <li><a href="#strlen">strlen</a></li>
-  <li><a href="#strstr">strstr</a></li>
-  <li><a href="#stristr">stristr</a></li>
-  <li><a href="#strpos">strpos</a></li>
-  <li><a href="#str_replace">str_replace</a></li>
-  <li><a href="#substr">substr</a></li>
-</ul>
-<h3>modification</h3>
-<ul>
-  <li>strip_tags</li>
-  <li>addslashes</li>
-  <li>stripslashes</li>
-  <li>htmlentities</li>
-  <li>str_shuffle</li>
-
-</ul>
+</section>
+<section>
+  <article class="">
+    <h3>case managment</h3>
+    <ul>
+      <li><a href="#trim">trim</a></li>
+      <li><a href="#strtolower">strtolower</a></li>
+      <li><a href="#strtoupper">strtoupper</a></li>
+      <li><a href="#ucfirst">ucfirst</a></li>
+      <li><a href="#lcfirst">lcfirst</a></li>
+    </ul>
+  </article>
+<article class="">
+  <h3>searching</h3>
+  <ul>
+    <li><a href="#wordCount">str_word_count</a></li>
+    <li><a href="#strlen">strlen</a></li>
+    <li><a href="#strstr">strstr</a></li>
+    <li><a href="#stristr">stristr</a></li>
+    <li><a href="#strpos">strpos</a></li>
+    <li><a href="#str_replace">str_replace</a></li>
+    <li><a href="#substr">substr</a></li>
+  </ul>
+</article>
+<article class="">
+  <h3>modification</h3>
+  <ul>
+    <li><a href="#stripTags">strip_tags</a></li>
+    <li><a href="#addslashes">addslashes</a></li>
+    <li>stripslashes</li>
+    <li>htmlentities</li>
+    <li>str_shuffle</li>
+  </ul>
+</article>
 <hr>
 <h3>examples</h3>
 
@@ -225,3 +240,53 @@ $rest = substr($word, -1);    // returns "f"
 $rest = substr($word, -2);    // returns "ef"
 $rest = substr($word, -3, 1); // returns "d"
 ?>
+
+<!-- strip_tags -->
+<article class="" id="stripTags">
+  <h4>strip_tags</h4>
+  <p>Strip HTML and PHP tags from a string</p>
+
+  <?php
+  $text = '<p>Test paragraph.</p><!-- Comment --> <a href="#fragment">Other text</a>';
+  print_r( "without strip_tags: $text<br>");
+  echo "Using strip_tags:". strip_tags($text);
+  echo "\n";
+
+  // Allow <p> and <a>
+  echo strip_tags($text, '<p><a>');
+
+  // as of PHP 7.4.0 the line above can be written as:
+  // echo strip_tags($text, ['p', 'a']);
+  ?>
+</article>
+<article class="" id="addslashes">
+  <h4>addslashes</h4>
+  <p>Quote string with slashes.Returns a string with backslashes added before
+     characters that need to be escaped.
+    single quote (')
+    double quote (")
+    backslash (\)
+    NUL (the NUL byte)
+   </p>
+   <?php
+   $str = "Is your name O'Reilly?";
+
+   // Outputs: Is your name O\'Reilly?
+   echo addslashes($str);
+   ?>
+</article>
+<article class="" id="stripslashes">
+  <h4>stripslashes</h4>
+  <p>Un-quotes a quoted string</p>
+
+<?php
+$str = "Is your name O\'reilly?";
+
+// Outputs: Is your name O'reilly?
+echo stripslashes($str);
+?>
+
+</article>
+</section>
+</body>
+</html>
